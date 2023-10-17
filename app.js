@@ -13,6 +13,10 @@ const newAdress = (adress,codePostal) => {
         let lon = data.features[0].geometry.coordinates[0];
         createMap([lat,lon])
         console.log(villes);
+        if(villes.length >= 2){
+            const distance = Math.sqrt((villes[0][0] - villes[1][0]) ** 2 + (villes[0][1] - villes[1][1]) ** 2) * 100;
+            document.querySelector("#km").innerHTML += `<h2>${distance.toFixed(2)}km entre les deux adresses</h2>`;
+        }
       })
     )
     .catch((error) => console.log("Error : " + error));
